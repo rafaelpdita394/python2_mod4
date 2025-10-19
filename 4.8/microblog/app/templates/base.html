@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{ title }} - Microblog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div>
+      Microblog: <a href="/">Home</a> | <a href="/login">Login</a> | <a href="/cadastro">Cadastro</a>
+    </div>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for msg in messages %}
+            <li>{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </body>
+</html>

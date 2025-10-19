@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Novo Post</h1>
+<form action="/post" method="post">
+  <textarea name="body" placeholder="Escreva algo..." required></textarea><br>
+  <button type="submit">Publicar</button>
+</form>
+{% endblock %}

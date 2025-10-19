@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if user %}
+    <h1>Olá, {{ user.username }}!</h1>
+    {% if user.foto %}<img src="{{ user.foto }}" alt="Foto de perfil" width="120"><br>{% endif %}
+    {% if user.bio %}<p>{{ user.bio }}</p>{% endif %}
+    <a href="/post">Escrever post</a> | <a href="/logout">Sair</a>
+    <hr>
+    <h2>Últimos posts:</h2>
+    {% if posts %}
+      {% for post in posts %}
+        <p><b>{{ post.author.username }}</b>: {{ post.body }}</p>
+        <small>{{ post.timestamp.strftime('%d/%m/%Y %H:%M') }}</small>
+        <hr>
+      {% endfor %}
+    {% else %}
+      <p>Nenhum post ainda.</p>
+    {% endif %}
+  {% else %}
+    <h1>Olá, visitante!</h1>
+    <p><a href="/login">Faça login</a> para continuar.</p>
+  {% endif %}
+{% endblock %}
